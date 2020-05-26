@@ -1,16 +1,17 @@
 #! /bin/bash
 # Merge pushes to development branch to stable branch
-if [ ! -n $2 ] ; then
-    echo "Usage: merge.sh <username> <password>"
+if [ ! -n $3 ] ; then
+    echo "Usage: merge.sh <username> <password> <branch>"
     exit 1;
 fi
 
 GIT_USER="$1"
 GIT_PASS="$2"
 
+
 # Specify the development branch and stable branch names
-FROM_BRANCH="test"
-CURRENT_BRANCH="test"
+FROM_BRANCH="$3"
+CURRENT_BRANCH="$3"
 TO_BRANCH="new"
 
 
