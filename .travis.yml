@@ -9,7 +9,7 @@ branches:
     - nathan
     - dev
     - test
-    - foo
+    - new
 
 # Export variables
 env:

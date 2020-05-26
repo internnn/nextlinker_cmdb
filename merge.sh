@@ -11,7 +11,7 @@ GIT_PASS="$2"
 # Specify the development branch and stable branch names
 FROM_BRANCH="test"
 CURRENT_BRANCH="test"
-TO_BRANCH="foo"
+TO_BRANCH="new"
 
 
 # Create the URL to push merge to 
@@ -37,7 +37,7 @@ if [ "$CURRENT_BRANCH" = "$FROM_BRANCH" ] ; then
     # git merge $FROM_BRANCH && \
 
     git pull --rebase origin $FROM_BRANCH
-
+    ls -a
 
     git add .
     git commit --allow-empty -m "please"
