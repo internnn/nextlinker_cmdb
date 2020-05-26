@@ -25,15 +25,13 @@ if [ "$CURRENT_BRANCH" = "$FROM_BRANCH" ] ; then
     # Checkout the dev branch
     #git checkout $FROM_BRANCH && \
     #echo "Checking out $TO_BRANCH..." && \
-    ls -a
     git init
     git config remote.origin.fetch refs/heads/*:refs/remotes/origin/*
     # Checkout the latest stable
     git fetch origin $TO_BRANCH:$TO_BRANCH && \
     git checkout $TO_BRANCH && \
-    git rebase --abort
+    # git rebase --abort
     ls -a
-    git branch
     # Merge the dev into latest stable
     # echo "Merging changes..." && \
     # git merge $FROM_BRANCH && \
