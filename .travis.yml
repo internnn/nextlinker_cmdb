@@ -34,7 +34,7 @@ jobs:
       script:
         - echo "hi, nathan"
     - stage: just test
-      condition: always()
+      # condition: always()
       # when test push, merge new with it
       if: type IN (push) and branch = test
       script:
