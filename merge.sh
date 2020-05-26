@@ -35,8 +35,9 @@ if [ "$CURRENT_BRANCH" = "$FROM_BRANCH" ] ; then
     # Merge the dev into latest stable
     # echo "Merging changes..." && \
     # git merge $FROM_BRANCH && \
+    git branch --set-upstream-to=origin/$TO_BRANCH TO_BRANCH
     git pull
-    # touch hello
+    touch hello
     # git pull --rebase origin $FROM_BRANCH
     ls -a
 
