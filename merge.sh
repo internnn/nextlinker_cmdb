@@ -24,7 +24,7 @@ if [ "$CURRENT_BRANCH" = "$FROM_BRANCH" ] ; then
     # Checkout the dev branch
     #git checkout $FROM_BRANCH && \
     #echo "Checking out $TO_BRANCH..." && \
-
+    git init
     # Checkout the latest stable
     git fetch origin $TO_BRANCH:$TO_BRANCH && \
     git checkout $TO_BRANCH && \
@@ -33,7 +33,7 @@ if [ "$CURRENT_BRANCH" = "$FROM_BRANCH" ] ; then
     # echo "Merging changes..." && \
     # git merge $FROM_BRANCH && \
 
-    git pull origin $FROM_BRANCH
+    git pull --rebase origin $FROM_BRANCH
 
 
     git add .
