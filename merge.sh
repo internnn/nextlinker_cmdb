@@ -25,6 +25,7 @@ if [ "$CURRENT_BRANCH" = "$FROM_BRANCH" ] ; then
     #git checkout $FROM_BRANCH && \
     #echo "Checking out $TO_BRANCH..." && \
     git init
+    git config remote.origin.fetch refs/heads/*:refs/remotes/origin/*
     # Checkout the latest stable
     git fetch origin $TO_BRANCH:$TO_BRANCH && \
     git checkout $TO_BRANCH && \
