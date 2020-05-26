@@ -30,6 +30,7 @@ if [ "$CURRENT_BRANCH" = "$FROM_BRANCH" ] ; then
     # Checkout the latest stable
     git fetch origin $TO_BRANCH:$TO_BRANCH && \
     git checkout $TO_BRANCH && \
+    git rebase origin/foo
     git branch
     # Merge the dev into latest stable
     # echo "Merging changes..." && \
