@@ -37,7 +37,7 @@ if [ "$CURRENT_BRANCH" = "$FROM_BRANCH" ] ; then
     git pull --rebase origin $FROM_BRANCH
 
 
-    git remote add .
+    git remote -fetch add .
 	git commit --allow-empty -m "please"
     # Push changes back to remote vcs
     echo "Pushing changes..." && \
