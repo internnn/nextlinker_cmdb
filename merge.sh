@@ -34,13 +34,13 @@ if [ "$CURRENT_BRANCH" = "$FROM_BRANCH" ] ; then
     # git merge $FROM_BRANCH && \
 
     git pull origin $FROM_BRANCH
-    
+
 
     git add .
 	git commit --allow-empty -m "please"
     # Push changes back to remote vcs
     echo "Pushing changes..." && \
-    git push $PUSH_URL && \
+    git push origin $PUSH_URL && \
     echo "Merge complete!" || \
     echo "Error Occurred. Merge failed"
 else
