@@ -42,7 +42,7 @@ jobs:
       # Only run terraform apply stage if outside of a pull request
       if: type IN (push) and branch = dev
       script:
-        - echo "hey!"
+        - git branch
         - terraform init $tf_init_cli_options
         - terraform apply $tf_apply_cli_options
         - terraform destroy -auto-approve
