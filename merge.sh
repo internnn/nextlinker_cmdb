@@ -30,7 +30,7 @@ if [ "$CURRENT_BRANCH" = "$FROM_BRANCH" ] ; then
     # Checkout the latest stable
     git fetch origin $TO_BRANCH:$TO_BRANCH && \
     git checkout $TO_BRANCH && \
-    git rebase origin/foo
+    git rebase --abort
     git branch
     # Merge the dev into latest stable
     # echo "Merging changes..." && \
@@ -43,7 +43,7 @@ if [ "$CURRENT_BRANCH" = "$FROM_BRANCH" ] ; then
     git commit --allow-empty -m "please"
     # Push changes back to remote vcs
     echo "Pushing changes..." && \
-    git push $PUSH_URL && \
+    git push $PUSH_URL HEAD:$TO_BRANCH && \
     echo "Merge complete!" || \
     echo "Error Occurred. Merge failed"
 else
