@@ -29,7 +29,7 @@ jobs:
   include:
     - stage: just test
       # when test push, merge new with it
-      if: type IN (push) and branch = test
+      if: type IN (push) and branch = nathan
       script:
         - git config --replace-all remote.origin.fetch +refs/heads/*:refs/remotes/origin/*
         - git fetch --all
@@ -38,13 +38,14 @@ jobs:
         -
     - stage: terraform validate and apply
       # Only run terraform apply stage if outside of a pull request
-      if: type IN (push) and branch = dev
+      if: type IN (push) and branch = test
       script:
-        - git branch
-        - terraform init $tf_init_cli_options
-        - terraform apply $tf_apply_cli_options
-        - terraform destroy -auto-approve
-        - echo "No error, infra destroyed completely"
+        - echo "hi"
+        # - git branch
+        # - terraform init $tf_init_cli_options
+        # - terraform apply $tf_apply_cli_options
+        # - terraform destroy -auto-approve
+        # - echo "No error, infra destroyed completely"
     # notifications:
     #   webhooks:
     #     urls:
