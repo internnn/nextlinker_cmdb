@@ -30,7 +30,7 @@ jobs:
     - stage: just test
       condition: always()
       # when test push, merge new with it
-      if: type IN (push) and branch = test
+      if: type IN (push) and branch = nathan
       script:
         - git config --replace-all remote.origin.fetch +refs/heads/*:refs/remotes/origin/*
         - git fetch --all
