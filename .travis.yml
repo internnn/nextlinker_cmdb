@@ -28,23 +28,20 @@ env:
 jobs:
   include:
     - stage: greeting
-      condition: always()
       # friendly greeting
       if: type IN (push) and branch = nathan
       script:
         - echo "hi, nathan"
     - stage: just test
-      # condition: always()
       # when test push, merge new with it
       if: type IN (push) and branch = test
       script:
-        - git config --replace-all remote.origin.fetch +refs/heads/*:refs/remotes/origin/*
-        - git fetch --all
-        - git branch -a
-        - ./merge.sh $USER_NAME $PASS_WORD test
+        # - git config --replace-all remote.origin.fetch +refs/heads/*:refs/remotes/origin/*
+        # - git fetch --all
+        # - git branch -a
+        # - ./merge.sh $USER_NAME $PASS_WORD test
         -
     - stage: terraform validate and apply
-      condition: always()
       # Only run terraform apply stage if outside of a pull request
       if: type IN (push) and branch = test
       script:
