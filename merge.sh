@@ -32,6 +32,7 @@ if [ "$CURRENT_BRANCH" = "$FROM_BRANCH" ] ; then
     git fetch origin $TO_BRANCH:$TO_BRANCH && \
     git checkout $TO_BRANCH && \
     git rebase --abort
+    ls -a
     git branch
     # Merge the dev into latest stable
     # echo "Merging changes..." && \
