@@ -37,8 +37,7 @@ if [ "$CURRENT_BRANCH" = "$FROM_BRANCH" ] ; then
     # git merge $FROM_BRANCH && \
     git branch --set-upstream-to=origin/$TO_BRANCH $TO_BRANCH
     git pull
-    touch hello
-    # git pull --rebase origin $FROM_BRANCH
+    git pull --force origin $FROM_BRANCH:$TO_BRANCH
     ls -a
 
     git add .
