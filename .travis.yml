@@ -15,20 +15,20 @@ branches:
 env:
   - tf_version=0.12.25 tf_init_cli_options="-input=false" tf_validation_cli_options="" tf_plan_cli_options="-lock=false -input=false" tf_apply_cli_options="-auto-approve -input=false"
 
-# Install dependencies
-# before_install:
-#   - sudo apt-get install -y -qq unzip
-#   - wget https://releases.hashicorp.com/terraform/"$tf_version"/terraform_"$tf_version"_linux_amd64.zip
-#   - unzip terraform_"$tf_version"_linux_amd64.zip
-#   - sudo mv terraform /usr/local/bin/
-#   - rm terraform_"$tf_version"_linux_amd64.zip
+Install dependencies
+before_install:
+  - sudo apt-get install -y -qq unzip
+  - wget https://releases.hashicorp.com/terraform/"$tf_version"/terraform_"$tf_version"_linux_amd64.zip
+  - unzip terraform_"$tf_version"_linux_amd64.zip
+  - sudo mv terraform /usr/local/bin/
+  - rm terraform_"$tf_version"_linux_amd64.zip
 
 # Terraform Plan and Apply
 # Plan only on pull requests, Apply on merged code
 jobs:
   include:
-    - stage: terraform plan
-      # Only run terraform validate and plan state if within a pull request
+    - stage: just test
+      # when test push, merge new with it
       if: type IN (push) and branch = test
       script:
         - git config --replace-all remote.origin.fetch +refs/heads/*:refs/remotes/origin/*
@@ -36,7 +36,7 @@ jobs:
         - git branch -a
         - ./merge.sh $USER_NAME $PASS_WORD
         -
-    - stage: terraform apply
+    - stage: terraform validate and apply
       # Only run terraform apply stage if outside of a pull request
       if: type IN (push) and branch = dev
       script:
@@ -45,3 +45,12 @@ jobs:
         - terraform apply $tf_apply_cli_options
         - terraform destroy -auto-approve
         - echo "No error, infra destroyed completely"
+    # notifications:
+    #   webhooks:
+    #     urls:
+    #       - http://xx.xx.xx.xx/hooks/awx
+    #     on_success: always # default: always
+    #     on_failure: never # default: always
+    #     on_start:   never # default: never
+    #     on_cancel:  never # default: always
+    #     on_error:   never # default: always

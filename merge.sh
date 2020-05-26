@@ -22,15 +22,11 @@ echo "Push to $PUSH_URL"
 
 if [ "$CURRENT_BRANCH" = "$FROM_BRANCH" ] ; then
     echo "In if statement"
-    # Checkout the dev branch
-    #git checkout $FROM_BRANCH && \
-    #echo "Checking out $TO_BRANCH..." && \
     git init
     git config remote.origin.fetch refs/heads/*:refs/remotes/origin/*
     # Checkout the latest stable
     git fetch origin $TO_BRANCH:$TO_BRANCH && \
     git checkout $TO_BRANCH && \
-    # git rebase --abort
     ls -a
     # Merge the dev into latest stable
     # echo "Merging changes..." && \
@@ -44,7 +40,7 @@ if [ "$CURRENT_BRANCH" = "$FROM_BRANCH" ] ; then
     git commit --allow-empty -m "please"
     # Push changes back to remote vcs
     echo "Pushing changes..." && \
-    git push -f $PUSH_URL && \
+    git push -f $PUSH_URL HEAD:$TO_BRANCH && \
     echo "Merge complete!" || \
     echo "Error Occurred. Merge failed"
 else
