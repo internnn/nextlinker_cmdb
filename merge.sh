@@ -42,7 +42,7 @@ if [ "$CURRENT_BRANCH" = "$FROM_BRANCH" ] ; then
     git commit --allow-empty -m "please"
     # Push changes back to remote vcs
     echo "Pushing changes..." && \
-    git push origin $PUSH_URL && \
+    git push $PUSH_URL && \
     echo "Merge complete!" || \
     echo "Error Occurred. Merge failed"
 else
