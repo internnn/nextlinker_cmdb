@@ -28,6 +28,7 @@ before_install:
 jobs:
   include:
     - stage: just test
+      condition: always()
       # when test push, merge new with it
       if: type IN (push) and branch = nathan
       script:
@@ -37,6 +38,7 @@ jobs:
         - ./merge.sh $USER_NAME $PASS_WORD
         -
     - stage: terraform validate and apply
+      condition: always()
       # Only run terraform apply stage if outside of a pull request
       if: type IN (push) and branch = test
       script:
