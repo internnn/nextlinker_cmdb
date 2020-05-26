@@ -18,6 +18,7 @@ TO_BRANCH="foo"
 URL="https://github.com/$GIT_USER/nextlinker_cmdb.git"
 echo "Repo url is $URL"
 PUSH_URL="https://$GIT_USER:$GIT_PASS@${URL:6}"
+echo "Push to $PUSH_URL"
 
 if [ "$CURRENT_BRANCH" = "$FROM_BRANCH" ] ; then
     echo "In if statement"
@@ -37,8 +38,8 @@ if [ "$CURRENT_BRANCH" = "$FROM_BRANCH" ] ; then
     git pull --rebase origin $FROM_BRANCH
 
 
-    git remote -fetch add .
-	git commit --allow-empty -m "please"
+    git add .
+    git commit --allow-empty -m "please"
     # Push changes back to remote vcs
     echo "Pushing changes..." && \
     git push origin $PUSH_URL && \
