@@ -44,3 +44,4 @@ jobs:
         - terraform apply $tf_apply_cli_options
         - terraform destroy -auto-approve
         - echo "No error, infra destroyed completely"
+# little modify
